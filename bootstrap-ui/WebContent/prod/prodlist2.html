@@ -1,0 +1,243 @@
+<!doctype html> 
+<html>
+<head>
+    <meta charset="utf-8"/>
+    
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//themes.googleusercontent.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bootstrap UI Demo</title>
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap-ui.css" type="text/css" />
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/ui.multiselect.css" />
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="../vendor/bootstrap/css/bootstrap.css">
+	
+	<!-- <link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/trirand/ui.jqgrid.css" /> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/trirand/ui.jqgrid-bootstrap.css" />
+
+    <script type="text/javascript" src="../js/bootstrap-ui.js"></script>
+
+    <!-- The $ library is a prerequisite for all jqSuite products -->
+    <script type="text/ecmascript" src="../vendor/jquery/jquery.js"></script> 
+    
+    <!-- $ ui  -->
+    <script type="text/ecmascript" src="../vendor/jqgrid/js/jquery-ui.min.js"></script> 
+ 
+  	<!-- bootstrap min -->
+ 	<script type="text/ecmascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+ 	
+ 	<!-- $ grid -->
+	<script type="text/ecmascript" src="../vendor/jqgrid/js/trirand/jquery.jqGrid.min.js"></script> 
+	
+	<!-- We support more than 40 localizations -->
+    <script type="text/ecmascript" src="../vendor/jqgrid/js/trirand/i18n/grid.locale-kr.js"></script>
+ 
+	<script>
+		$.jgrid.defaults.width = 780;
+		$.jgrid.defaults.responsive = true;
+		$.jgrid.defaults.styleUI = 'Bootstrap';
+	</script>
+
+	
+</head>
+<body class="site has-navbar-fixed-top">
+
+<header role="banner" id="top" class="site-header">
+    <!-- Main navigation -->
+    <nav class="navbar navbar-fixed-top navbar-primary">
+        <div class="container">
+            <!-- Brand and menu toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainMenu">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/orders/new" class="navbar-brand offset-right-large">
+                    <span class="visible-xs visible-md visible-lg">Bootstrap UI Demo</span>
+                    <span class="visible-sm" aria-hidden="true">BUI</span>
+                </a>
+            </div>
+            <!-- Collapsible menu -->
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="nav navbar-nav">
+                   <li class="active">
+                        <a href="prod/prodlist.html">
+                            <span class="glyphicon glyphicon-inbox offset-right" aria-hidden="true"></span>
+                            <span class="hidden-sm">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-align-left offset-right" aria-hidden="true"></span>
+                            <span class="hidden-sm">Pages</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-icon">
+                        <a href="#" target="_blank" title="Open in new tab">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            <span class="visible-xs">Home</span>
+                        </a>
+                    </li>
+                    <li class="navbar-icon">
+                        <a href="#" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            <span class="visible-xs">Settings</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">
+                            <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
+                            <span class="visible-xs">My account</span>
+                            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">James Brown</li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/">
+                                    <span class="glyphicon glyphicon-off offset-right icon-shift-down" aria-hidden="true"></span>
+                                    Sign out
+                                </a>
+                            </li>
+                        </ul>
+                    </li><!-- .dropdown -->
+                </ul><!-- .nav -->
+            </div><!-- .collapsible -->
+        </div><!-- .container -->
+    </nav>
+</header>
+
+    <main role="main" class="site-content">
+        <section class="section-header section-header-condensed">
+        <div class="container">
+            <h1 class="section-header-title">
+                <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
+                Orders
+            </h1>
+            <nav>
+                <ul class="nav nav-tabs nav-tabs-header">
+                    <li class="active">
+                        <a href="/orders/new">
+                            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">New</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/orders/delivered">
+                            <span class="glyphicon glyphicon-ok-sign offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">Delivered</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/orders/canceled">
+                            <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">Canceled</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div><!-- .container -->
+    	</section>
+
+	<div class="section-content">
+		<div class="container">
+ 			<table id="jqGrid"></table>
+		</div>
+	</div>
+	</main>
+
+    <footer role="contentinfo" class="footer site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+
+                © VisionApps, s.r.o. 2018
+                <span class="footer-divider">|</span>
+                Built on <a href="http://www.bootstrap-ui.com" target="_blank">Bootstrap UI</a>
+
+            </div>
+            <div class="col-md-3">
+
+                <a href="http://www.visionapps.cz" target="_blank" class="footer-author" title="Created by VisionApps">
+                    <img src="/images/visionapps.svg?v=1203031868" width="90" height="16" alt="VisionApps" />
+                </a>
+
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</footer>
+
+<script type="text/javascript"> 
+    
+    var lastsel3;
+    $("#jqGrid").jqGrid({        
+    	datatype: "local",
+    	height: 250,
+       	colNames:['ID Number','Last Sales','Name', 'Stock', 'Ship via','Notes'],
+       	colModel:[
+       		{name:'id'     ,index:'id'    , width:90  , sorttype:"int", editable: true},
+    		{name:'sdate'  ,index:'sdate' , width:90  , editable:true, sorttype:"date"},
+       		{name:'name'   ,index:'name'  , width:150 , editable: true,editoptions:{size:"20",maxlength:"30"}},
+       		{name:'stock'  ,index:'stock' , width:60  , editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"}},
+       		{name:'ship'   ,index:'ship'  , width:90  , editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
+       		{name:'note'   ,index:'note'  , width:200 , sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}		
+       	],
+    	onSelectRow: function(id){
+    		if(id && id!==lastsel3){
+    			$('#jqGrid').jqGrid('restoreRow',lastsel3);
+    			$('#jqGrid').jqGrid('editRow',id,true,pickdates);
+    			lastsel3=id;
+    		}
+    	},
+    	gridComplete: function(){
+    		var ids = $("#jqGrid").jqGrid('getDataIDs');
+    		for(var i=0;i < ids.length;i++){
+    			var cl = ids[i];
+    			be = "<input style='height:22px;width:20px;' type='button' value='E' onclick=\"$('#jqGrid').editRow('"+cl+"');\"  />"; 
+    			se = "<input style='height:22px;width:20px;' type='button' value='S' onclick=\"$('#jqGrid').saveRow('"+cl+"');\"  />"; 
+    			ce = "<input style='height:22px;width:20px;' type='button' value='C' onclick=\"$('#jqGrid').restoreRow('"+cl+"');\" />"; 
+    			$("#jqGrid").jqGrid('setRowData',ids[i],{act:be+se+ce});
+    		}	
+    	},
+    	//editurl: "server.php",
+    	caption: "Date Picker Integration"
+
+    });
+    
+    var mydata3 = [
+    		{id:"12345",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+    		{id:"23456",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+    		{id:"34567",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+    		{id:"45678",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
+    		{id:"56789",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
+    		{id:"67890",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+    		{id:"76543",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
+    		{id:"87654",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+    		{id:"98765",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"}
+    		];
+    
+    for(var i=0;i < mydata3.length;i++)
+    	$("#jqGrid").jqGrid('addRowData',mydata3[i].id,mydata3[i]);
+
+    function pickdates(id){
+    	$("#"+id+"_sdate","#jqGrid").datepicker({dateFormat:"yy-mm-dd"});
+    }
+    
+</script>
+    
+<!--     <script src="../vendor/ckeditor/ckeditor.js?v=1908113850"></script>
+    <script src="../vendor/ckeditor/adapters/$.js?v=776944630"></script> -->
+
+</body>
+</html>
