@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8"/>
     
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<!--     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//themes.googleusercontent.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" /> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Bootstrap UI Demo</title>
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext" type="text/css" />
+    <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext" type="text/css" /> -->
     <link rel="stylesheet" href="../css/bootstrap-ui.css" type="text/css" />
     
     <link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/jquery-ui.css" />
@@ -37,14 +37,13 @@
 	<script type="text/ecmascript" src="../vendor/jqgrid/js/trirand/jquery.jqGrid.min.js"></script> 
 	
 	<!-- We support more than 40 localizations -->
-    <script type="text/ecmascript" src="../vendor/jqgrid/js/trirand/i18n/grid.locale-kr.js"></script>
+    <script type="text/ecmascript" src="../vendor/jqgrid/js/trirand/i18n/grid.locale-kr.js"></script>  
  
 	<script>
-		$.jgrid.defaults.width = 780;
+		$.jgrid.defaults.width = 1150;
 		$.jgrid.defaults.responsive = true;
 		$.jgrid.defaults.styleUI = 'Bootstrap';
 	</script>
-
 	
 </head>
 <body class="site has-navbar-fixed-top">
@@ -133,7 +132,7 @@
                             <span class="hidden-xs">New</span>
                         </a>
                     </li>
-                    <li>
+<!--                     <li>
                         <a href="/orders/delivered">
                             <span class="glyphicon glyphicon-ok-sign offset-right" aria-hidden="true"></span>
                             <span class="hidden-xs">Delivered</span>
@@ -144,7 +143,7 @@
                             <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
                             <span class="hidden-xs">Canceled</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
         </div><!-- .container -->
@@ -152,67 +151,119 @@
 
 	<div class="section-content">
 		<div class="container">
- 			<table id="jqGrid"></table>
-		</div>
+			<fieldset class="offset-bottom">
+			<div class="panel panel-default">
+	    		<div class="panel-heading panel-heading-extended">
+				<form name="searchForm" class="form-filter">
+				    <div class="row">
+				        <div class="col-sm-3">
+				           <div class="form-group">
+				                <label>Place of Birth</label>
+				                <select class="form-control">
+				                    <option value="">All</option>
+				                    <option value="Denver">Denver</option>
+				                    <option value="Liptákov">Liptákov</option>
+				                    <option value="Moscow">Moscow</option>
+				                    <option value="Munich">Munich</option>
+				                    <option value="Prague">Prague</option>
+				                    <option value="Viena">Vienna</option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="col-sm-3">
+				            <div class="form-group">
+				                <label>Cash under</label>
+				                <input type="text" class="form-control" />
+				            </div>
+				        </div>
+				        <div class="col-sm-3">
+				            <div class="form-group">
+				                <label>Cash over</label>
+				                <input type="text" class="form-control" />
+				            </div>
+				        </div>
+				        <div class="col-sm-3">
+				            <div class="form-actions">
+				                <button type="button" class="btn btn-primary btn-raised">검색</button>
+				            </div>
+				        </div>
+				    </div><!-- .row -->
+				</form>
+	    		</div>
+			</div>
+			</fieldset>
+			
+			<!-- grid -->
+			<fieldset class="offset-bottom">
+			<div style="width:100%;display:inline-block">
+				<div style="width:70%">
+					Ordered Products 
+				</div>
+					<div class="form-group offset-right" style="width:30%;height:30px">
+						<button type="submit" class="btn btn-primary btn-raised" style="float:right;">add row</button>
+					</div>								
+			</div>	
+
+				<table id="jqGrid"></table>
+				<div id="jqgGridPager"></div>
+		 	</fieldset>  
+
+			<div class="form-group offset-right">
+				<div style="float:right">
+					<button type="button" class="btn btn-primary btn-raised">Save</button> 
+				</div>
+			</div>
+					
+ 		</div>
+ 		<!-- .container -->
 	</div>
-	</main>
+	<!-- .section contents -->
+</main>
 
-    <footer role="contentinfo" class="footer site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-
-                © VisionApps, s.r.o. 2018
-                <span class="footer-divider">|</span>
-                Built on <a href="http://www.bootstrap-ui.com" target="_blank">Bootstrap UI</a>
-
-            </div>
-            <div class="col-md-3">
-
-                <a href="http://www.visionapps.cz" target="_blank" class="footer-author" title="Created by VisionApps">
-                    <img src="/images/visionapps.svg?v=1203031868" width="90" height="16" alt="VisionApps" />
-                </a>
-
-            </div>
-        </div><!-- .row -->
-    </div><!-- .container -->
-</footer>
 
 <script type="text/javascript"> 
     
+$(document).ready(function(){
+	
+	
+	
+	
+});
+
+/**
+ * 조회
+ */
+function f_select(){
+	
+	
+}
+
     var lastsel3;
     $("#jqGrid").jqGrid({        
     	datatype: "local",
-    	height: 250,
-       	colNames:['ID Number','Last Sales','Name', 'Stock', 'Ship via','Notes'],
+    	height: 350,
+       	colNames:['ID Number','Last Sales','Name', 'Stock', 'Ship via','Notes', 'edit'],
        	colModel:[
        		{name:'id'     ,index:'id'    , width:90  , sorttype:"int", editable: true},
     		{name:'sdate'  ,index:'sdate' , width:90  , editable:true, sorttype:"date"},
        		{name:'name'   ,index:'name'  , width:150 , editable: true,editoptions:{size:"20",maxlength:"30"}},
        		{name:'stock'  ,index:'stock' , width:60  , editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"}},
        		{name:'ship'   ,index:'ship'  , width:90  , editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-       		{name:'note'   ,index:'note'  , width:200 , sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}		
+       		{name:'note'   ,index:'note'  , width:300 , sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"1",cols:"10"}},	
+       		{name:'act'    ,index:'act'   , width:150  ,sortable:false}
        	],
-    	onSelectRow: function(id){
-    		if(id && id!==lastsel3){
-    			$('#jqGrid').jqGrid('restoreRow',lastsel3);
-    			$('#jqGrid').jqGrid('editRow',id,true,pickdates);
-    			lastsel3=id;
-    		}
-    	},
+//     	onSelectRow: function(id){
+//     		if(id && id!==lastsel3){
+//     			//$('#jqGrid').jqGrid('restoreRow',lastsel3);
+//     			$('#jqGrid').jqGrid('editRow',id,true,pickdates);
+//     			lastsel3=id;
+//     		}
+//     	},
+    	pager: '#jqgGridPager',
     	gridComplete: function(){
-    		var ids = $("#jqGrid").jqGrid('getDataIDs');
-    		for(var i=0;i < ids.length;i++){
-    			var cl = ids[i];
-    			be = "<input style='height:22px;width:20px;' type='button' value='E' onclick=\"$('#jqGrid').editRow('"+cl+"');\"  />"; 
-    			se = "<input style='height:22px;width:20px;' type='button' value='S' onclick=\"$('#jqGrid').saveRow('"+cl+"');\"  />"; 
-    			ce = "<input style='height:22px;width:20px;' type='button' value='C' onclick=\"$('#jqGrid').restoreRow('"+cl+"');\" />"; 
-    			$("#jqGrid").jqGrid('setRowData',ids[i],{act:be+se+ce});
-    		}	
-    	},
-    	//editurl: "server.php",
-    	caption: "Date Picker Integration"
-
+    		
+    	}
+ 
     });
     
     var mydata3 = [
@@ -227,8 +278,14 @@
     		{id:"98765",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"}
     		];
     
-    for(var i=0;i < mydata3.length;i++)
+    for(var i=0;i < mydata3.length;i++){
     	$("#jqGrid").jqGrid('addRowData',mydata3[i].id,mydata3[i]);
+    	var cl = mydata3[i].id;
+		ce = "<a class='item-action' onclick=\"$('#jqGrid').editRow('"+cl+"',true, pickdates);\"><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a>";
+		be = "<a class='item-action' onclick=\"$('#jqGrid').restoreRow('"+cl+"');\"><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span></a>";
+		$("#jqGrid").jqGrid('setRowData',mydata3[i].id,{act:ce+be});
+    }
+    
 
     function pickdates(id){
     	$("#"+id+"_sdate","#jqGrid").datepicker({dateFormat:"yy-mm-dd"});
