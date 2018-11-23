@@ -1,0 +1,43 @@
+매출관리
+재고관리
+단가관리
+주문관리
+견적관리
+고객관리
+
+
+제품   tb_product
+제품코드 prod_code
+제품명   prod_name
+제조사  prod_manufacturer
+시리얼번호 serial_number
+판매단가 unit_price
+제조일자 prod_date
+입고일자 inhou_date
+입고수량 inhou_qty
+비고     remarks
+등록일자 regist_date
+수정일자 modify_date
+
+
+거래처    tb_customer
+거래처코드 customer_code
+거래처명   customer_name
+대표자     ceo
+전화       mobile phone
+이메일     email
+주소       address
+담당자     manager_name
+사업자번호 biz_number
+비고       remarks
+등록일자 regist_date
+수정일자 modify_date
+
+판매관리  tb_sales
+판매일자  sales_date
+제품코드  prod_code
+판매수량  sales_qty
+거래처    customer_code  
+비고      remarks   
+등록일자 regist_date
+수정일자 modify_date

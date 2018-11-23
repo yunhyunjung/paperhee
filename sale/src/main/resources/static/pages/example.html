@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sales Management</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     
+    <link rel="stylesheet" href="../vendor/datatables/css/jquery.dataTables.min.css"/> 
+    
+    <link rel="stylesheet" href="../vendor/datatables/css/buttons.dataTables.min.css"/> 
+    
+    <link rel="stylesheet" href="../vendor/datatables/css/select.dataTables.min.css"/>
+    
+    <link rel="stylesheet" href="../vendor/datatables/css/responsive.dataTables.min.css"/> 
+    
+    <link rel="stylesheet" href="../vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css"/>
+    
+    <style>
+      table.dataTable tbody>tr.selected,
+      table.dataTable tbody>tr>.selected {
+        background-color: #A2D3F6;
+      }
+    </style>
+      
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- jQuery -->
+    <!-- <script src="../vendor/jquery/jquery.min.js"></script> -->
+
+	<script src="../vendor/jquery/jquery-1.12.0.min.js" ></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+   
+    <!-- dataTables  -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js" ></script>
+	
+	<script src="../vendor/datatables/js/dataTables.buttons.min.js" ></script>
+	
+	<script src="../vendor/datatables/js/dataTables.select.min.js" ></script>
+	
+	<script src="../vendor/datatables/js/dataTables.responsive.min.js" ></script>
+	
+	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+	
+    <!-- Datatables Pluging JavaScript -->
+    <script src="../vendor/datatables-plugins/dataTables.altEditor.free.js"></script>
+    
+    <script src="../vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="../vendor/bootstrap-datepicker/locales/bootstrap-datepicker.ko.min.js"></script>
+    
+  
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script type="text/javascript"> 
+    
+	    $(document).ready(function() {
+
+	    	 var jsonData = {"data" :[
+	    	    		    {
+	    	    		      "DT_RowId": "row_1",
+	    	    		      "first_name": "Quynn",
+	    	    		      "last_name": "Contreras",
+	    	    		      "updated_date": "9/6/2018",
+	    	    		      "registered_date": "Friday 6 April 2012"
+	    	    		    },
+	    	    		    {
+	    	    		      "DT_RowId": "row_2",
+	    	    		      "first_name": "Kaitlin",
+	    	    		      "last_name": "Smith",
+	    	    		      "updated_date": "9/6/2018",
+	    	    		      "registered_date": "Tuesday 20 November 2012"
+	    	    		    }
+	    	    		    ]};
+	    	 
+	    	 
+		  	  var columnDefs = [
+		  		  {
+		  		    data: "first_name",
+                    title: "first_name",
+                    type: "readonly"
+                   },
+		  		  { data: "last_name",
+		  		    title: "last_name"
+		  		  },
+		  		  {
+		  		   data: "updated_date",
+		  		   title: "updated_date",
+		  		   type: 'datetime'
+		  		  },
+		  		  { 
+		  		    data: "registered_date",
+		  		    title: "registered_date"
+		  		  }];
+	
+	  	  var myTable;
+	  	  myTable = $('#prodTables').DataTable({
+	  	    "sPaginationType": "full_numbers",
+	  	    columns: columnDefs,
+	  	    ajax : "/data/data.json",
+	  	    //data : jsonData,
+	  		dom: 'Bfrtip',        // Needs button container
+	  	    select: 'single',
+	  	    responsive: true,
+	  	    altEditor: true,     // Enable altEditor
+	  	    addUrl: "/prod/saveProd",
+	  	    updateUrl : "/prod/updateProd",
+	  	    deleteUrl : "/prod/deleteProd",
+	  	    buttons: [{
+	  	            text: 'Add',
+	  	            name: 'add'        // do not change name
+	  	          },
+	
+	  	          {
+	  	            extend: 'selected', // Bind to Selected row
+	  	            text: 'Edit',
+	  	            name: 'edit'        // do not change name
+	  	          },
+	
+	  	          {
+	  	            extend: 'selected', // Bind to Selected row
+	  	            text: 'Delete',
+	  	            name: 'delete'      // do not change name
+	  	         }]
+	  	  });
+	  	  
+	  	});    
+    	  
+ 	</script>
+   	
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Sales Management</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="prod.html"><i class="fa fa-table fa-fw"></i> Prod Manage</a>
+                        </li>
+                        <li>
+                            <a href="example.html"><i class="fa fa-table fa-fw"></i> Datatables Example</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Prod Management</h1>
+					      <table cellpadding="0" cellspacing="0" border="0" class="dataTable table table-striped" id="prodTables"></table>
+ 						<!-- /.datatables -->
+                     </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+<!--     <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datepicker({
+            	language: 'ko',
+            	enableOnReadonly : "true"
+            });
+        });
+    </script> -->
+</body>
+
+</html>

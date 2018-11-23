@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//themes.googleusercontent.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bootstrap UI Demo</title>
+    <meta name="description" content="Bootstrap UI Design Pattern Library" />
+    <meta name="author" content="VisionApps, s.r.o. [www.visionapps.cz]" />
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap-ui.css" type="text/css" />
+
+    <script type="text/javascript" src="../js/bootstrap-ui.js"></script>
+
+</head>
+<body class="site has-navbar-fixed-top">
+
+<header role="banner" id="top" class="site-header">
+    <!-- Main navigation -->
+    <nav class="navbar navbar-fixed-top navbar-primary">
+        <div class="container">
+            <!-- Brand and menu toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainMenu">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/orders/new" class="navbar-brand offset-right-large">
+                    <span class="visible-xs visible-md visible-lg">Bootstrap UI Demo</span>
+                    <span class="visible-sm" aria-hidden="true">BUI</span>
+                </a>
+            </div>
+            <!-- Collapsible menu -->
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="nav navbar-nav">
+                   <li class="active">
+                        <a href="prod/prodlist.html">
+                            <span class="glyphicon glyphicon-inbox offset-right" aria-hidden="true"></span>
+                            <span class="hidden-sm">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-align-left offset-right" aria-hidden="true"></span>
+                            <span class="hidden-sm">Pages</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-icon">
+                        <a href="#" target="_blank" title="Open in new tab">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            <span class="visible-xs">Home</span>
+                        </a>
+                    </li>
+                    <li class="navbar-icon">
+                        <a href="#" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            <span class="visible-xs">Settings</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">
+                            <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
+                            <span class="visible-xs">My account</span>
+                            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">James Brown</li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/">
+                                    <span class="glyphicon glyphicon-off offset-right icon-shift-down" aria-hidden="true"></span>
+                                    Sign out
+                                </a>
+                            </li>
+                        </ul>
+                    </li><!-- .dropdown -->
+                </ul><!-- .nav -->
+            </div><!-- .collapsible -->
+        </div><!-- .container -->
+    </nav>
+</header>
+
+    <main role="main" class="site-content">
+        <section class="section-header section-header-condensed">
+        <div class="container">
+            <h1 class="section-header-title">
+                <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
+                Orders
+            </h1>
+            <nav>
+                <ul class="nav nav-tabs nav-tabs-header">
+                    <li class="active">
+                        <a href="/orders/new">
+                            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">New</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/orders/delivered">
+                            <span class="glyphicon glyphicon-ok-sign offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">Delivered</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/orders/canceled">
+                            <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
+                            <span class="hidden-xs">Canceled</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div><!-- .container -->
+    	</section>
+
+	<div class="section-content">
+		<div class="container">
+
+			<div class="table-responsive table-responsive-dropdowns">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th class="table-cell-id">#</th>
+							<th data-toggle="sort" data-sort-onload="asc" class="col-sm-3" tabindex="0">Date</th>
+							<th data-toggle="sort" class="col-sm-3" tabindex="0">Name</th>
+							<th data-toggle="sort" class="col-sm-3 text-right" tabindex="0">Price USD</th>
+							<th class="col-sm-2 text-center">Payment</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="table-cell-id">1</td>
+							<td><a href="/orders/edit/1" class="small text-nowrap">2016-04-16 12:02:12</a></td>
+							<td><a href="/orders/edit/1" class="text-nowrap"> Herman Melville </a></td>
+							<td class="text-right">222</td>
+							<td class="text-center"><span class="label label-default">Paid online</span></td>
+							<td class="table-cell-actions"><a href="/orders/edit/1" class="item-action" title="Edit">
+							   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> 
+							   <a href="#" class="item-action" title="Mark as delivered"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions1"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions1">
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">2</td>
+							<td><a href="/orders/edit/2" class="small text-nowrap">2016-04-17
+									03:24:12</a></td>
+							<td><a href="/orders/edit/2" class="text-nowrap"> Jane
+									Austin </a></td>
+							<td class="text-right">190</td>
+							<td class="text-center"></td>
+							<td class="table-cell-actions"><a href="/orders/edit/2"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions2"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions2">
+										<li><a href="#"> <span
+												class="glyphicon glyphicon-usd offset-right"
+												aria-hidden="true"></span> Mark as paid
+										</a></li>
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">3</td>
+							<td><a href="/orders/edit/3" class="small text-nowrap">2016-04-18
+									18:22:53</a></td>
+							<td><a href="/orders/edit/3" class="text-nowrap"> Ernest
+									Hemingway </a></td>
+							<td class="text-right">19</td>
+							<td class="text-center"></td>
+							<td class="table-cell-actions"><a href="/orders/edit/3"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions3">
+										<li><a href="#"> <span
+												class="glyphicon glyphicon-usd offset-right"
+												aria-hidden="true"></span> Mark as paid
+										</a></li>
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">4</td>
+							<td><a href="/orders/edit/4" class="small text-nowrap">2016-04-20
+									12:15:31</a></td>
+							<td><a href="/orders/edit/4" class="text-nowrap"> Mark
+									Twain </a></td>
+							<td class="text-right">170</td>
+							<td class="text-center"></td>
+							<td class="table-cell-actions"><a href="/orders/edit/4"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions4"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions4">
+										<li><a href="#"> <span
+												class="glyphicon glyphicon-usd offset-right"
+												aria-hidden="true"></span> Mark as paid
+										</a></li>
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">5</td>
+							<td><a href="/orders/edit/5" class="small text-nowrap">2016-04-20
+									12:24:12</a></td>
+							<td><a href="/orders/edit/5" class="text-nowrap"> Agatha
+									Christie </a></td>
+							<td class="text-right">83</td>
+							<td class="text-center"><span class="label label-default">Paid
+									online</span></td>
+							<td class="table-cell-actions"><a href="/orders/edit/5"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions5"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions5">
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">6</td>
+							<td><a href="/orders/edit/6" class="small text-nowrap">2016-04-21
+									13:14:02</a></td>
+							<td><a href="/orders/edit/6" class="text-nowrap"> Edgar
+									Poe </a></td>
+							<td class="text-right">353</td>
+							<td class="text-center"></td>
+							<td class="table-cell-actions"><a href="/orders/edit/6"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions6"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions6">
+										<li><a href="#"> <span
+												class="glyphicon glyphicon-usd offset-right"
+												aria-hidden="true"></span> Mark as paid
+										</a></li>
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+						<tr>
+							<td class="table-cell-id">7</td>
+							<td><a href="/orders/edit/7" class="small text-nowrap">2016-04-22
+									14:22:10</a></td>
+							<td><a href="/orders/edit/7" class="text-nowrap"> Emily
+									Dickinson </a></td>
+							<td class="text-right">857</td>
+							<td class="text-center"><span class="label label-default">Paid
+									online</span></td>
+							<td class="table-cell-actions"><a href="/orders/edit/7"
+								class="item-action" title="Edit"> <span
+									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</a> <a href="#" class="item-action" title="Mark as delivered"> <span
+									class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+							</a>
+								<div class="btn-group">
+									<button class="item-action" type="button" id="itemOptions7"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="glyphicon glyphicon-option-vertical"
+											aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="itemOptions7">
+										<li>
+											<button type="button" class="btn btn-dropdown"
+												data-toggle="confirm"
+												data-confirm-message="Do you really want to cancel this order?"
+												data-confirm-yes="Yes" data-confirm-no="No">
+												<span class="glyphicon glyphicon-remove-sign offset-right"
+													aria-hidden="true"></span> Cancel order
+											</button>
+										</li>
+									</ul>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	</main>
+
+    <footer role="contentinfo" class="footer site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+
+                © VisionApps, s.r.o. 2018
+                <span class="footer-divider">|</span>
+                Built on <a href="http://www.bootstrap-ui.com" target="_blank">Bootstrap UI</a>
+
+            </div>
+            <div class="col-md-3">
+
+                <a href="http://www.visionapps.cz" target="_blank" class="footer-author" title="Created by VisionApps">
+                    <img src="/images/visionapps.svg?v=1203031868" width="90" height="16" alt="VisionApps" />
+                </a>
+
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</footer>
+    
+    <script src="/vendor/ckeditor/ckeditor.js?v=1908113850"></script>
+    <script src="/vendor/ckeditor/adapters/jquery.js?v=776944630"></script>
+
+</body>
+</html>

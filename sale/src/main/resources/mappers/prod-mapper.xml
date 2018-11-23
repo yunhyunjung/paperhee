@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProdMapper">
+
+    <select id="selectListProd" parameterType="HashMap" resultType="HashMap">
+      <![CDATA[
+ 
+SELECT   PROD_CODE   as prodCode
+       , SEQ         as seq
+	   , PROD_NAME   as prodName
+	   , SERIAL_NO   as serialNo
+	   , MODEL       as model
+	   , MANUFACTURER as manufacturer
+	   , PRICE        as price
+	   , PROD_DATE    as prodDate
+	   , AF_SERVICE   as afService
+	   , WEIGHT       as weight
+	   , HEIGHT       as height
+	   , INTERFACE    as interface
+	   , INPUT        as input
+	   , OUTPUT       as output
+	   , ETC          as etc
+	   , ADD_ONS      as addOns
+	   , UNIT_PRICE   as unitPrice
+	   , CREATE_ID    as createId
+	   , date_format(CREATE_DATE, '%Y%m%d') createDate
+	   , MODIFY_ID    as modifyId
+	   , date_format(MODIFY_DATE, '%Y%m%d') modifyDate
+FROM     TB_PRODUCT A
+WHERE    1=1 
+	  ]]>
+    <if test="prodCode != null and prodCode != ''">
+        AND PROD_CDE = #{prodCode}
+    </if>
+    <if test="prodName != null and prodName != ''">
+        AND PROD_NAME LIKE CONCAT('%',#{prodName},'%')
+    </if>
+    <if test="serialNo != null and serialNo != ''">
+        AND SERIAL_NO LIKE CONCAT('%',#{serialNo},'%')
+    </if>	  
+    <if test="model != null and model != ''">
+        AND MODEL LIKE CONCAT('%',#{model},'%')
+    </if>	  
+    <if test="manufacturer != null and manufacturer != ''">
+        AND MANUFACTURER LIKE CONCAT('%',#{manufacturer},'%')
+    </if>	  
+    </select>
+
+
+    <select id="selectProd" parameterType="HashMap" resultType="HashMap">
+      <![CDATA[
+ 
+SELECT   PROD_CODE   as prodCode
+       , SEQ         as seq
+	   , PROD_NAME   as prodName
+	   , SERIAL_NO   as serialNo
+	   , MODEL       as model
+	   , MANUFACTURER as manufacturer
+	   , PRICE        as price
+	   , PROD_DATE    as prodDate
+	   , AF_SERVICE   as afService
+	   , WEIGHT       as weight
+	   , HEIGHT       as height
+	   , INTERFACE    as interface
+	   , INPUT        as input
+	   , OUTPUT       as output
+	   , ETC          as etc
+	   , ADD_ONS      as addOns
+	   , UNIT_PRICE   as unitPrice
+	   , CREATE_ID    as createId
+	   , date_format(CREATE_DATE, '%Y%m%d') createDate
+	   , MODIFY_ID    as modifyId
+	   , date_format(MODIFY_DATE, '%Y%m%d') modifyDate
+FROM     TB_PRODUCT A
+WHERE    1=1 
+AND PROD_CODE = #{prodCode}
+	  ]]>
+    </select>
+    
+    <insert id="insertProd" parameterType="HashMap" >
+		<selectKey resultType="hashmap" keyProperty="prodCode,seq" order="BEFORE">
+		SELECT  concat(date_format(now(), '%Y%m%d'), lpad(ifnull(max(SEQ),0)+1,4,'0')) as prodCode
+		       ,IFNULL(max(SEQ)+1,1) AS seq
+		FROM    TB_PRODUCT
+		WHERE   SUBSTR(PROD_CODE,1,4) = date_format(now(), '%Y')		
+		</selectKey>
+     <![CDATA[ 
+		INSERT INTO TB_PRODUCT
+		(
+		   PROD_CODE
+		 , SEQ
+		 , PROD_NAME
+		 , SERIAL_NO
+		 , MODEL
+		 , MANUFACTURER
+		 , PRICE
+		 , UNIT_PRICE
+		 , PROD_DATE
+		 , AF_SERVICE
+		 , WEIGHT
+		 , HEIGHT
+		 , INTERFACE
+		 , INPUT
+		 , OUTPUT
+		 , ETC
+		 , ADD_ONS
+		 , CREATE_ID
+		 , CREATE_DATE
+		 , MODIFY_ID
+		 , MODIFY_DATE
+		)
+		VALUES
+		(
+		   #{prodCode}
+		 , #{seq}
+		 , #{prodName}
+		 , #{serialNo}
+		 , #{model}
+		 , #{manufacturer}
+		 , #{price}
+		 , #{unitPrice}
+		 , #{prodDate}
+		 , #{afService}
+		 , #{weight}
+		 , #{height }
+		 , #{INTERFACE}
+		 , #{INPUT}
+		 , #{OUTPUT}
+		 , #{ETC}
+		 , #{ADD_ONS}
+		 , 'ADMINISTRATOR'
+		 , now()
+		 , 'ADMINISTRATOR'
+		 , now()
+		) 
+ 
+      ]]>
+    </insert>
+
+    <update id="updateProd" parameterType="HashMap">
+      <![CDATA[
+ 
+UPDATE  TB_PRODUCT
+SET   
+        PROD_NAME     =  #{prodName}         
+      , SERIAL_NO     =  #{serialNo}     
+      , MODEL         =  #{model}        
+      , MANUFACTURER  =  #{manufacturer} 
+      , PRICE         =  #{price}        
+      , PROD_DATE     =  #{prodDate}     
+      , AF_SERVICE    =  #{afService}    
+      , WEIGHT        =  #{weight}       
+      , HEIGHT        =  #{height }      
+      , INTERFACE     =  #{INTERFACE}    
+      , INPUT         =  #{INPUT}        
+      , OUTPUT        =  #{OUTPUT}       
+      , ETC           =  #{ETC}          
+      , ADD_ONS       =  #{ADD_ONS}      
+      , UNIT_PRICE    =  #{UNIT_PRICE}   
+      , CREATE_ID     =  'ADMINISTRATOR' 
+      , CREATE_DATE   =  now()         
+      , MODIFY_ID     =  'ADMINISTRATOR' 
+      , MODIFY_DATE   =  now()         
+WHERE   PROD_CODE     =  #{prod_code}    
+ 
+      ]]>
+    </update> 
+    
+    <delete id="deleteProd" parameterType="HashMap">
+      <![CDATA[
+ 
+DELETE FROM TB_PRODUCT
+WHERE PROD_CODE = #{prodCode} 
+ 
+      ]]>
+    </delete> 
+        
+</mapper>
