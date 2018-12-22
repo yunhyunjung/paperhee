@@ -124,11 +124,11 @@ AND PROD_CODE = #{prodCode}
 		 , #{afService}
 		 , #{weight}
 		 , #{height }
-		 , #{INTERFACE}
-		 , #{INPUT}
-		 , #{OUTPUT}
-		 , #{ETC}
-		 , #{ADD_ONS}
+		 , #{interface}
+		 , #{input}
+		 , #{output}
+		 , #{etc}
+		 , #{addOns}
 		 , 'ADMINISTRATOR'
 		 , now()
 		 , 'ADMINISTRATOR'
@@ -152,17 +152,17 @@ SET
       , AF_SERVICE    =  #{afService}    
       , WEIGHT        =  #{weight}       
       , HEIGHT        =  #{height }      
-      , INTERFACE     =  #{INTERFACE}    
-      , INPUT         =  #{INPUT}        
-      , OUTPUT        =  #{OUTPUT}       
-      , ETC           =  #{ETC}          
-      , ADD_ONS       =  #{ADD_ONS}      
-      , UNIT_PRICE    =  #{UNIT_PRICE}   
+      , INTERFACE     =  #{interface}    
+      , INPUT         =  #{input}        
+      , OUTPUT        =  #{output}       
+      , ETC           =  #{etc}          
+      , ADD_ONS       =  #{addOns}      
+      , UNIT_PRICE    =  #{unitPrice}   
       , CREATE_ID     =  'ADMINISTRATOR' 
       , CREATE_DATE   =  now()         
       , MODIFY_ID     =  'ADMINISTRATOR' 
       , MODIFY_DATE   =  now()         
-WHERE   PROD_CODE     =  #{prod_code}    
+WHERE   PROD_CODE     =  #{prodCode}    
  
       ]]>
     </update> 

@@ -1,141 +1,14 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html> 
-<html>
-<head>
-    <meta charset="utf-8"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//themes.googleusercontent.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Product List</title>
-
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext" type="text/css" />
-    <link rel="stylesheet" href="/resources/css/bootstrap-ui.css" type="text/css" />
-    
-    <link rel="stylesheet" type="text/css" media="screen" href="/resources/vendor/jqgrid/css/jquery-ui.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="/resources/vendor/jqgrid/css/ui.multiselect.css" />
+<script>
+	$.jgrid.defaults.width = 1130;
+	$.jgrid.defaults.responsive = true;
+	$.jgrid.defaults.styleUI = 'Bootstrap';
+</script>
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="/resources/vendor/bootstrap/css/bootstrap.css">
-	
-	<!-- <link rel="stylesheet" type="text/css" media="screen" href="../vendor/jqgrid/css/trirand/ui.jqgrid.css" /> -->
-	<link rel="stylesheet" type="text/css" media="screen" href="/resources/vendor/jqgrid/css/trirand/ui.jqgrid-bootstrap.css" />
-
-    
-        <!-- The $ library is a prerequisite for all jqSuite products -->
-    <script type="text/ecmascript" src="/resources/vendor/jquery/jquery.js"></script> 
-    
-    <!-- $ ui  -->
-    <script type="text/ecmascript" src="/resources/vendor/jqgrid/js/jquery-ui.min.js"></script> 
-    
-    <!-- moment -->
-    <script type="text/ecmascript" src="/resources/vendor/bootstrap-datepicker/js/moment.js"></script> 	
-     	
-  	<!-- bootstrap min -->
- 	<script type="text/ecmascript" src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
- 	
- 	<!--  bootstrap datetimepicker -->
-	<script type="text/ecmascript" src="/resources/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
- 	<!-- $ grid -->
-	<script type="text/ecmascript" src="/resources/vendor/jqgrid/js/trirand/jquery.jqGrid.min.js"></script> 
-	
-	<!-- We support more than 40 localizations -->
-    <script type="text/ecmascript" src="/resources/vendor/jqgrid/js/trirand/i18n/grid.locale-kr.js"></script>
- 
-  	<script type="text/javascript" src="/resources/js/bootstrap-ui.js"></script>
-  	
-	<!-- js Zip -->
-    <!-- <script type="text/ecmascript" src="../vendor/jszip/jszip.min.js"></script> -->
-    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    
-	<script>
-		$.jgrid.defaults.width = 1130;
-		$.jgrid.defaults.responsive = true;
-		$.jgrid.defaults.styleUI = 'Bootstrap';
-	</script>
-
-</head>
-<body class="site has-navbar-fixed-top">
-
-<header role="banner" id="top" class="site-header">
-    <!-- Main navigation -->
-    <nav class="navbar navbar-fixed-top navbar-primary">
-        <div class="container">
-            <!-- Brand and menu toggle -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainMenu">
-                    <span class="sr-only">Menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/orders/new" class="navbar-brand offset-right-large">
-                    <span class="visible-xs visible-md visible-lg">Sales Management System</span>
-                    <span class="visible-sm" aria-hidden="true">BUI</span>
-                </a>
-            </div>
-            <!-- Collapsible menu -->
-            <div class="collapse navbar-collapse" id="mainMenu">
-                <ul class="nav navbar-nav">
-                   <li class="active">
-                        <a href="prod/prodlist.html">
-                            <span class="glyphicon glyphicon-inbox offset-right" aria-hidden="true"></span>
-                            <span class="hidden-sm">Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-align-left offset-right" aria-hidden="true"></span>
-                            <span class="hidden-sm">Customer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-align-left offset-right" aria-hidden="true"></span>
-                            <span class="hidden-sm">Sales</span>
-                        </a>
-                    </li>
-                </ul>
-<!--                 <ul class="nav navbar-nav navbar-right">
-                    <li class="navbar-icon">
-                        <a href="#" target="_blank" title="Open in new tab">
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            <span class="visible-xs">Home</span>
-                        </a>
-                    </li>
-                    <li class="navbar-icon">
-                        <a href="#" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            <span class="visible-xs">Settings</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">
-                            <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
-                            <span class="visible-xs">My account</span>
-                            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">James Brown</li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="/">
-                                    <span class="glyphicon glyphicon-off offset-right icon-shift-down" aria-hidden="true"></span>
-                                    Sign out
-                                </a>
-                            </li>
-                        </ul>
-                    </li>.dropdown
-                </ul>.nav -->
-            </div><!-- .collapsible -->
-        </div><!-- .container -->
-    </nav>
-</header>
-
     <main role="main" class="site-content">
         <section class="section-header section-header-condensed">
         <div class="container">
@@ -222,11 +95,21 @@
 				
 			<fieldset class="offset-bottom">
  				<table id="jqGrid"></table>
- 				<div id="jqGridPager"></div>
+ 				<!-- <div id="jqGridPager"></div> -->
+
+				<!-- //데이터가 없을 경우 메세지를 띄울 태그 -->
+				<div id="NoData"></div>
+				
+				<!-- // 그리드에 적용되있는 페이징 태그 -->
+				<div id="pager"></div>     
+				
+				<!-- // 새롭게 구현할 커스텀 페이징 태그 -->
+				<div id="paginate"></div>
+
  			</fieldset>
 
 			<div class="form-group offset-right" style="float:right">
-				<a href="/view">
+				<a href="/prod/view">
 					<input type="button" class="btn btn-primary btn-raised" value="제품등록" /> 
 				</a>
 					<input type="button" class="btn btn-success btn-raised" value="EXCEL" id="btn_export"/> 
@@ -243,8 +126,6 @@
     
     var lastsel3;
     $("#jqGrid").jqGrid({
-    	//url :  "/prod/list",
-    	//datatype: "json",
     	datatype: "local",
     	height: 350,
        	colNames:['제품코드','제품명','순번','시리얼번호', '모델', '제조사','가격', '일자', '편집'],
@@ -307,11 +188,11 @@
        	    	}
        	    }
        	],
-     	pager: '#jqGridPager',
+/*      	pager: '#jqGridPager',
         rownumbers: true, // show row numbers
         rownumWidth: 35, // the width of the row numbers columns
         rowNum: 10,
-		rowList: [10,20,50], 
+		rowList: [10,20,50],  */
         hoverrows: true,
         multiSort: true,
         multiselect: true ,
@@ -324,7 +205,10 @@
     			var prodCode = $(this).jqGrid('getCell', rowid, 'prodCode')
     			fn_view(prodCode);
     		}
-    	}
+    	},
+    	loadComplete : function(data){  
+			
+        }
     });
 
     
@@ -386,7 +270,6 @@
 
     }); 
     
-    
     //조회
     function fn_select(){
     	
@@ -411,6 +294,19 @@
 		    		//console.log(row);
 		    		$("#jqGrid").jqGrid('addRowData',row.prodCode,row);
 		    	});
+		    	
+/* 		    	// 그리드 데이터 총 갯수
+		        var allRowsInGrid = jQuery('#jqGrid').jqGrid('getGridParam','records');
+	            
+				// 데이터가 없을 경우 (먼저 태그 초기화 한 후에 적용)
+				$("#NoData").html("");
+				if(allRowsInGrid==0){
+					$("#NoData").html("<br>데이터가 없습니다.<br>");
+				}
+				// 처음 currentPage는 널값으로 세팅 (=1)
+				initPage("jqGrid",allRowsInGrid,""); */
+				
+				
 		    }, // 요청 완료 시
 		    error: function(result) {
 
@@ -421,10 +317,151 @@
     
     //상세조회
     function fn_view(prodCode){
-    	
-    	var url = "/view?prodCode="+prodCode;
+    	var url = "/prod/view?prodCode="+prodCode;
     	$(location).attr('href', url);
-  
+    }
+    
+  //그리드 페이징 
+    function initPage(gridId,totalSize,currentPage){
+	  
+	   alert(totalSize);
+    	
+    	// 변수로 그리드아이디, 총 데이터 수, 현재 페이지를 받는다
+    	if(currentPage==""){
+    		var currentPage = $('#'+gridId).getGridParam('page');
+    	}
+    	// 한 페이지에 보여줄 페이지 수 (ex:1 2 3 4 5)
+    	var pageCount = 10;
+    	// 그리드 데이터 전체의 페이지 수
+    	var totalPage = Math.ceil(totalSize/$('#'+gridId).getGridParam('rowNum'));
+    	// 전체 페이지 수를 한화면에 보여줄 페이지로 나눈다.
+    	var totalPageList = Math.ceil(totalPage/pageCount);
+    	// 페이지 리스트가 몇번째 리스트인지
+    	var pageList=Math.ceil(currentPage/pageCount);
+    	
+    	alert("currentPage="+currentPage+"/ totalPage="+totalSize);
+    	alert("pageCount="+pageCount+"/ pageList="+pageList);
+    	
+    	// 페이지 리스트가 1보다 작으면 1로 초기화
+    	if(pageList<1) pageList=1;
+    	// 페이지 리스트가 총 페이지 리스트보다 커지면 총 페이지 리스트로 설정
+    	if(pageList>totalPageList) pageList = totalPageList;
+    	// 시작 페이지
+    	var startPageList=((pageList-1)*pageCount)+1;
+    	// 끝 페이지
+    	var endPageList=startPageList+pageCount-1;
+    	
+    	//alert("startPageList="+startPageList+"/ endPageList="+endPageList);
+    	
+    	// 시작 페이지와 끝페이지가 1보다 작으면 1로 설정
+    	// 끝 페이지가 마지막 페이지보다 클 경우 마지막 페이지값으로 설정
+    	if(startPageList<1) startPageList=1;
+    	if(endPageList>totalPage) endPageList=totalPage;
+    	if(endPageList<1) endPageList=1;
+    	
+    	// 페이징 DIV에 넣어줄 태그 생성변수 
+    	var pageInner="";
+    	
+    	// 페이지 리스트가 1이나 데이터가 없을 경우 (링크 빼고 흐린 이미지로 변경)
+    	if(pageList<2){
+    		
+    		pageInner+="[처음]";
+    		pageInner+="[이전]";
+    		
+    	}
+    	// 이전 페이지 리스트가 있을 경우 (링크넣고 뚜렷한 이미지로 변경)
+    	if(pageList>1){
+    		
+    		pageInner+="<a class='first' href='javascript:firstPage()'>[처음]</a>";
+    		pageInner+="<a class='pre' href='javascript:prePage("+totalSize+")'>[이전]</a>";
+    		
+    	}
+    	// 페이지 숫자를 찍으며 태그생성 (현재페이지는 강조태그) 
+    	for(var i=startPageList; i<=endPageList; i++){
+    		if(i==currentPage){
+    			pageInner = pageInner +"<a href='javascript:goPage("+(i)+")' id='"+(i)+"'><strong>"+(i)+"</strong></a> ";
+    		}else{
+    			pageInner = pageInner +"<a href='javascript:goPage("+(i)+")' id='"+(i)+"'>"+(i)+"</a> ";
+    		}
+    		
+    	}
+    	//alert("총페이지 갯수"+totalPageList);
+    	//alert("현재페이지리스트 번호"+pageList);
+    	
+    	// 다음 페이지 리스트가 있을 경우
+    	if(totalPageList>pageList){
+    		
+    		pageInner+="<a class='next' href='javascript:nextPage("+totalSize+")'>[다음]</a>";
+    		pageInner+="<a class='last' href='javascript:lastPage("+totalPage+")'>[마지막]</a>";
+    	}
+    	// 현재 페이지리스트가 마지막 페이지 리스트일 경우
+    	if(totalPageList==pageList){
+    		
+    		pageInner+="[다음]";
+    		pageInner+="[마지막]";
+    	}   
+    	//alert(pageInner);
+    	// 페이징할 DIV태그에 우선 내용을 비우고 페이징 태그삽입
+    	$("#paginate").html("");
+    	$("#paginate").append(pageInner);
+    	
+    }
+
+    // 그리드 첫페이지로 이동 
+    function firstPage(){
+    		
+    		$("#jqGrid").jqGrid('setGridParam', {
+    							page:1
+    						}).trigger("reloadGrid");
+    		
+    }
+    // 그리드 이전페이지 이동 
+    function prePage(totalSize){
+    		
+    		var currentPage = $('#jqGrid').getGridParam('page');
+    		var pageCount = 10;
+    		
+    		currentPage-=pageCount;
+    		pageList=Math.ceil(currentPage/pageCount);
+    		currentPage=(pageList-1)*pageCount+pageCount;
+    		
+    		initPage("jqGrid",totalSize,currentPage);
+    		
+    		$("#jqGrid").jqGrid('setGridParam', {
+    							page:currentPage
+    						}).trigger("reloadGrid");
+    		
+    }
+    // 그리드 다음페이지 이동 	
+    function nextPage(totalSize){
+    		
+    		var currentPage = $('#jqGrid').getGridParam('page');
+    		var pageCount = 10;
+    		
+    		currentPage+=pageCount;
+    		pageList=Math.ceil(currentPage/pageCount);
+    		currentPage=(pageList-1)*pageCount+1;
+    		
+    		initPage("jqGrid",totalSize,currentPage);
+    		
+    		$("#jqGrid").jqGrid('setGridParam', {
+    							page:currentPage
+    						}).trigger("reloadGrid");
+    }
+    // 그리드 마지막페이지 이동 
+    function lastPage(totalSize){
+    		
+    		$("#jqGrid").jqGrid('setGridParam', {
+    							page:totalSize
+    						}).trigger("reloadGrid");
+    }
+    // 그리드 페이지 이동 
+    function goPage(num){
+    		
+    		$("#jqGrid").jqGrid('setGridParam', {
+    							page:num
+    						}).trigger("reloadGrid");
+    		
     }
 </script>
 

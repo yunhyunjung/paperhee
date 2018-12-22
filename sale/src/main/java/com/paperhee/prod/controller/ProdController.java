@@ -24,7 +24,7 @@ public class ProdController {
 	@Autowired
 	ProdService prodService;
 
-	@RequestMapping("/index")
+	@RequestMapping("/prod")
 	public String index() {
 		return "/prod/list";
 	}
@@ -41,6 +41,7 @@ public class ProdController {
 
 		List<Map<String, Object>> prodList = prodService.selectList(paramMap);
 		resultMap.put("rows", prodList);
+		resultMap.put("total", prodList.size());
 		return resultMap;
 	}
 
@@ -71,7 +72,7 @@ public class ProdController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/view")
+	@RequestMapping(value="/prod/view")
 	public String selectProd(Model model, @RequestParam(value="prodCode", defaultValue="false") String prodCode) throws Exception {
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -80,7 +81,9 @@ public class ProdController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Object prod = prodService.selectProd(paramMap);
 		resultMap.put("prod",prod);
+
 		model.addAttribute("prodVO", prod);
+
 		return  "/prod/save";
 	}
 

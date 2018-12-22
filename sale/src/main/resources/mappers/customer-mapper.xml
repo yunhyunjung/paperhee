@@ -6,59 +6,76 @@
     <select id="selectListCustomer" parameterType="HashMap" resultType="HashMap">
       <![CDATA[
  
-		SELECT   CUSTOMER_CODE
-		       , CUSTOMER_NAME
-		       , CUSTOMER_TYPE
-		       , MAIN_OPER_NAME
-		       , SUB_OPER_NAME
-		       , MANEGER_TEL_NO
-		       , MANAGER_EMAIL_ADDR
-		       , TEL
-		       , FAX
-		       , ADDRESS
-		       , ETC
-		       , CEO
-		       , COMPANY_TYPE
-		       , BIZ_TYPE
-		       , BIZ_ITEM
-		       , USE_YN
-		       , CREATE_DATE
-		       , CREATE_ID
-		       , MODIFY_DATE
-		       , MODIFY_ID
+		SELECT   CUSTOMER_CODE       AS customerCode
+		       , CUSTOMER_NAME       AS customerName
+		       , CUSTOMER_TYPE       AS customerType
+		       , CASE WHEN CUSTOMER_TYPE = '1' THEN '거래처'
+		              WHEN CUSTOMER_TYPE = '2' THEN '제조사'
+		              WHEN CUSTOMER_TYPE = '3' THEN '협력사'
+		              WHEN CUSTOMER_TYPE = '4' THEN '기타'   END AS customerTypeNm
+		       , MAIN_OPER_NAME      AS mainOperName
+		       , SUB_OPER_NAME       AS subOperName
+		       , MANAGER_TEL_NO      AS managerTelNo
+		       , MANAGER_EMAIL_ADDR  AS managerEmailAddr
+		       , TEL                 AS tel
+		       , FAX                 AS fax
+		       , ADDRESS             AS address
+		       , ETC                 AS etc
+		       , CEO                 AS ceo
+		       , COMPANY_TYPE        AS companyType
+		       , CASE WHEN COMPANY_TYPE = '1' THEN '대기업'
+		              WHEN COMPANY_TYPE = '2' THEN '관공서'
+		              WHEN COMPANY_TYPE = '3' THEN '중소기업'
+		              WHEN COMPANY_TYPE = '4' THEN '기타'   END AS companyTypeNm
+		       , BIZ_TYPE            AS bizType
+		       , BIZ_ITEM            AS bizItem
+		       , USE_YN              AS useYn
+		       , CREATE_DATE         as createDate
+		       , CREATE_ID           as createId
+		       , MODIFY_DATE         as modifyDate
+		       , MODIFY_ID           as modifyId
 		FROM     TB_CUSTOMER
 		WHERE    1=1
 	  ]]>
-   
+      <if test="customerCode != null and customerCode != ''">
+          AND CUSTOMER_CODE = #{customerCode}
+      </if>
+      <if test="customerName != null and customerName != ''">
+          AND CUSTOMER_NAME LIKE CONCAT('%',#{customerName},'%')
+      </if>
+      <if test="customerType != null and customerType != ''">
+          AND CUSTOMER_TYPE = #{customerType}
+      </if>     
     </select>
 
 
     <select id="selectCustomer" parameterType="HashMap" resultType="HashMap">
       <![CDATA[
-		SELECT   CUSTOMER_CODE
-		       , CUSTOMER_NAME
-		       , CUSTOMER_TYPE
-		       , MAIN_OPER_NAME
-		       , SUB_OPER_NAME
-		       , MANEGER_TEL_NO
-		       , MANAGER_EMAIL_ADDR
-		       , TEL
-		       , FAX
-		       , ADDRESS
-		       , ETC
-		       , CEO
-		       , COMPANY_TYPE
-		       , BIZ_TYPE
-		       , BIZ_ITEM
-		       , USE_YN
-		       , CREATE_DATE
-		       , CREATE_ID
-		       , MODIFY_DATE
-		       , MODIFY_ID
+		SELECT   CUSTOMER_CODE            AS customerCode  
+		       , CUSTOMER_NAME            AS customerName  
+		       , CUSTOMER_TYPE            AS customerType  
+		       , MAIN_OPER_NAME           AS mainOperName  
+		       , SUB_OPER_NAME            AS subOperName   
+		       , MANAGER_TEL_NO           AS managerTelNo  
+		       , MANAGER_EMAIL_ADDR       AS managerEmailAddr
+		       , TEL                      AS tel           
+		       , FAX                      AS fax           
+		       , ADDRESS                  AS address       
+		       , ETC                      AS etc           
+		       , CEO                      AS ceo           
+		       , COMPANY_TYPE             AS companyType   
+		       , BIZ_TYPE                 AS bizType       
+		       , BIZ_ITEM                 AS bizItem       
+		       , USE_YN                   AS useYn         
+		       , CREATE_DATE              as createDate    
+		       , CREATE_ID                as createId      
+		       , MODIFY_DATE              as modifyDate    
+		       , MODIFY_ID                as modifyId      
 		FROM     TB_CUSTOMER
 		WHERE    1=1
 		AND      CUSTOMER_CODE = #{customerCode}
 	  ]]>
+
     </select>
     
     <insert id="insertCustomer" parameterType="HashMap" >
@@ -78,7 +95,7 @@
 				, CUSTOMER_TYPE    
 				, MAIN_OPER_NAME    
 				, SUB_OPER_NAME     
-				, MANEGER_TEL_NO    
+				, MANAGER_TEL_NO    
 				, MANAGER_EMAIL_ADDR
 				, TEL               
 				, FAX               
@@ -102,7 +119,7 @@
 				, #{customerType}    
 				, #{mainOperName}    
 				, #{subOperName}     
-				, #{manegerTelNo}    
+				, #{managerTelNo}    
 				, #{managerEmailAddr}
 				, #{tel}               
 				, #{fax}               
@@ -130,7 +147,7 @@
 				, CUSTOMER_TYPE       =  #{customerType}    
 				, MAIN_OPER_NAME      =  #{mainOperName}    
 				, SUB_OPER_NAME       =  #{subOperName}     
-				, MANEGER_TEL_NO      =  #{manegerTelNo}    
+				, MANAGER_TEL_NO      =  #{managerTelNo}    
 				, MANAGER_EMAIL_ADDR  =  #{managerEmailAddr}
 				, TEL                 =  #{tel}             
 				, FAX                 =  #{fax}             
